@@ -4,8 +4,8 @@ import HangmanDrawing from "./HangmanDrawing";
 import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
 import "reactjs-popup/dist/index.css";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
+// import Alert from "react-bootstrap/Alert";
+// import Button from "react-bootstrap/Button";
 
 function getWord() {
   return words[Math.floor(Math.random() * words.length)];
