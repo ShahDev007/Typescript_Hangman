@@ -3,6 +3,9 @@ import words from "./wordList.json";
 import HangmanDrawing from "./HangmanDrawing";
 import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
+import "reactjs-popup/dist/index.css";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 
 function getWord() {
   return words[Math.floor(Math.random() * words.length)];
@@ -73,9 +76,10 @@ function App() {
       }}
     >
       <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "Winner! - Refresh to try again"}
+        {isWinner && "Great, you won, refresh to try again"}
         {isLoser && "Nice Try! - Refresh to try again"}
       </div>
+
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
         reveal={isLoser}

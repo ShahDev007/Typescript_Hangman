@@ -12,9 +12,10 @@ const HangmanWord = ({
   return (
     <div
       style={{
+        textAlign: "center",
         display: "flex",
-        gap: ".25rem",
-        fontSize: "6rem",
+        gap: ".75rem",
+        fontSize: "3rem",
         textTransform: "uppercase",
         fontFamily: "monospace",
       }}
