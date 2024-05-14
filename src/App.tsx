@@ -3,8 +3,8 @@ import words from "./wordList.json";
 import HangmanDrawing from "./HangmanDrawing";
 import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
-import "reactjs-popup/dist/index.css";
-// import Alert from "react-bootstrap/Alert";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Alert from "react-bootstrap/Alert";
 // import Button from "react-bootstrap/Button";
 
 function getWord() {
@@ -75,9 +75,17 @@ function App() {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "Great, you won, refresh to try again"}
-        {isLoser && "Nice Try! - Refresh to try again"}
+      <div style={{ fontSize: "1rem", textAlign: "center", paddingTop: "5px" }}>
+        {isWinner && (
+          <Alert key="primary" variant="primary">
+            You got the word, play again!!
+          </Alert>
+        )}
+        {isLoser && (
+          <Alert key="primary" variant="primary">
+            You are out of trials, try again!
+          </Alert>
+        )}
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />

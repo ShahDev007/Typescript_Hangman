@@ -1,13 +1,13 @@
 const HEAD = (
   <div
     style={{
-      width: "25px",
-      height: "25px",
+      width: "33px",
+      height: "33px",
       borderRadius: "50%",
       border: "5px solid black",
       position: "absolute",
       top: "25px",
-      right: "-15px",
+      right: "-14px",
     }}
   />
 );
