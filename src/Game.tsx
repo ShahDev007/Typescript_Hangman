@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Alert from "react-bootstrap/Alert";
 import { useLocation } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
+import backgroundImage from "./image.jpg";
+
 // import Button from "react-bootstrap/Button";
 
 type importedData = {
@@ -98,7 +100,8 @@ function Game() {
         gap: "2rem",
         margin: "0 auto",
         alignItems: "center",
-        backgroundColor: "#ffe5c8"
+        backgroundColor: "#ffe5c8",
+        background: `url(${backgroundImage})`
       }}
     >
       <div style={{ fontSize: "1rem", textAlign: "center", paddingTop: "5px" }}>
