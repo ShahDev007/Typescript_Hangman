@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
 import Form from "react-bootstrap/Form";
-import { Badge, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import backgroundImage from "./image.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 
