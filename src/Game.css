@@ -1,0 +1,32 @@
+.progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  position: relative;
+  height: 10px;
+  width: 200px; /* Adjust the width of the progress bar */
+  border: 2px solid black; /* Border color */
+  border-radius: 15px;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.color {
+  position: absolute;
+  background-color: black; /* Color of the progress */
+  width: 0;
+  height: 100%;
+  border-radius: 15px;
+  animation: progress 10s linear; /* Animation for filling the progress */
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

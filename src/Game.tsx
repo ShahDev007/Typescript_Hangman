@@ -4,9 +4,11 @@ import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Alert from "react-bootstrap/Alert";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
-import backgroundImage from "./image.jpg";
+import backgroundImage from "./image2.jpg";
+import "./Game.css";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 // import Button from "react-bootstrap/Button";
 
@@ -14,6 +16,11 @@ type importedData = {
   category: string;
   difficulty: string;
   wordCategories: {};
+};
+
+type Letter = {
+  letter1: string;
+  letter2: string;
 };
 
 function getWord({ category, difficulty, wordCategories }: importedData) {
@@ -26,31 +33,37 @@ function getWord({ category, difficulty, wordCategories }: importedData) {
   }
   console.log(cat);
 
-  return cat[Math.floor(Math.random() * cat.length)];
+  const word = cat[Math.floor(Math.random() * cat.length)];
+  if (word) {
+    return word.replace(/\s+/g, "");
+  }
 }
 
 function Game() {
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const location = useLocation();
   const category = location.state?.category;
   const difficulty = location.state?.difficulty;
 
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+
   const [wordToGuess, setWordToGuess] = useState(
     getWord({ category, difficulty, wordCategories })
   );
-  console.log(wordToGuess);
-
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+  // console.log(wordToGuess);
 
   const incorrectLetters = guessedLetters.filter(
     (letter) => !wordToGuess.includes(letter)
   );
 
-  const isLoser = incorrectLetters.length >= 10;
+  const isLoser = incorrectLetters.length >= 6;
 
   const isWinner = wordToGuess
     .split("")
     .every((letter: string) => guessedLetters.includes(letter));
 
+  // Add guessedLetters function
   const addGuessedLetter = (letter: string) => {
     console.log("Guessed letters", guessedLetters);
     if (guessedLetters.includes(letter) || isLoser || isWinner) return;
@@ -60,6 +73,19 @@ function Game() {
     ]);
   };
 
+  // Loader
+  useEffect(() => {
+    if (isLoser || isWinner) {
+      setLoading(true);
+      console.log("Here", isLoser, isWinner);
+      // Simulate a 10-second delay before redirecting
+      setTimeout(() => {
+        navigate("/");
+      }, 10000); // 10 seconds
+    }
+  }, [isLoser, isWinner]);
+
+  // Add guessed letter
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const key = e.key;
@@ -77,64 +103,122 @@ function Game() {
     };
   }, [guessedLetters]);
 
+  // Initial guesssing
+
+  const initialGuessing = ({ letter1, letter2 }: Letter) => {
+    addGuessedLetter(letter1);
+    addGuessedLetter(letter2);
+  };
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      const key = e.key;
-      if (key !== "Enter") return;
-      e.preventDefault();
-      setWordToGuess(getWord({ category, difficulty, wordCategories }));
-      setGuessedLetters([]);
+    console.log(guessedLetters, wordToGuess);
+
+    const getRandomLetters = () => {
+      const randomIndex1 = Math.floor(Math.random() * wordToGuess.length);
+      let randomIndex2 = Math.floor(Math.random() * wordToGuess.length);
+      while (randomIndex2 === randomIndex1) {
+        randomIndex2 = Math.floor(Math.random() * wordToGuess.length);
+      }
+      const letter1 = wordToGuess[randomIndex1];
+      const letter2 = wordToGuess[randomIndex2];
+      return { letter1, letter2 };
     };
-    document.addEventListener("keypress", handler);
-    return () => {
-      document.removeEventListener("keypress", handler);
-    };
+
+    // Initialize guessing with two random letters
+    const { letter1, letter2 } = getRandomLetters();
+    initialGuessing({ letter1, letter2 });
   }, []);
 
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "2rem",
-        margin: "0 auto",
-        alignItems: "center",
-        backgroundColor: "#ffe5c8",
-        background: `url(${backgroundImage})`
-      }}
-    >
-      <div style={{ fontSize: "1rem", textAlign: "center", paddingTop: "5px" }}>
-        {isWinner && (
-          <Alert key="primary" variant="primary">
-            You got the word, play again!!
-          </Alert>
-        )}
-        {isLoser && (
-          <Alert key="danger" variant="danger">
-            You are out of trials, try again!
-          </Alert>
-        )}
-      </div>
-
-      <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
-      <HangmanWord
-        reveal={isLoser}
-        guessedLetters={guessedLetters}
-        wordToGuess={wordToGuess}
-      />
-      <div style={{ alignSelf: "stretch" }}>
-        <Keyboard
-          disabled={isWinner || isLoser}
-          activeLetters={guessedLetters.filter((letter) =>
-            wordToGuess.includes(letter)
+    <HelmetProvider>
+      <div
+        style={{
+          background: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          // justifyContent: "center",
+          alignItems: "center",
+          // padding: "2rem",
+          color: "white",
+          backgroundRepeat: "no-repeat",
+          
+        }}
+      >
+        <div
+          style={{ fontSize: "1rem", textAlign: "center", marginTop: "2rem"}}
+        >
+          <Helmet>
+            <link
+              href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+              rel="stylesheet"
+            />
+          </Helmet>
+          {isWinner && (
+            <Alert
+              key="success"
+              variant="success"
+              style={{ borderRadius: "5px 5px 5px 5px" }}
+            >
+              <b>
+                You got the word, play again!!
+              </b>
+              {loading && (
+                <div className="progress-container" style={{marginTop:"10px"}}>
+                  <div className="progress">
+                    <div className="color"></div>
+                  </div>
+                </div>
+              )}
+            </Alert>
           )}
-          inactiveLetters={incorrectLetters}
-          addGuessedLetter={addGuessedLetter}
+          {isLoser && (
+            <Alert key="dark" variant="dark">
+              <b>You are out of trials, try again!!</b>
+              {loading && (
+                <div className="progress-container">
+                  <div className="progress">
+                    <div className="color"></div>
+                  </div>
+                </div>
+              )}
+            </Alert>
+          )}
+        </div>
+
+        <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
+        <HangmanWord
+          reveal={isLoser}
+          guessedLetters={guessedLetters}
+          wordToGuess={wordToGuess}
         />
+        <div style={{ alignSelf: "stretch",marginTop:"10px" }}>
+          <Keyboard
+            disabled={isWinner || isLoser}
+            activeLetters={guessedLetters.filter((letter) =>
+              wordToGuess.includes(letter)
+            )}
+            inactiveLetters={incorrectLetters}
+            addGuessedLetter={addGuessedLetter}
+          />
+        </div>
       </div>
-    </div>
+    </HelmetProvider>
   );
 }
 
 export default Game;
+
+// useEffect(() => {
+//   const handler = (e: KeyboardEvent) => {
+//     const key = e.key;
+//     if (key !== "Enter") return;
+//     e.preventDefault();
+//     setWordToGuess(getWord({ category, difficulty, wordCategories }));
+//     setGuessedLetters([]);
+//   };
+//   document.addEventListener("keypress", handler);
+//   return () => {
+//     document.removeEventListener("keypress", handler);
+//   };
+// }, []);

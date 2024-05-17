@@ -18,10 +18,18 @@ const HangmanWord = ({
         fontSize: "3rem",
         textTransform: "uppercase",
         fontFamily: "monospace",
+        marginTop:"2rem",
       }}
     >
       {wordToGuess.split("").map((letter, index) => (
-        <span style={{ borderBottom: ".1em solid black" }} key={index}>
+        <span
+          style={{
+            borderBottom: ".1em solid white",
+            marginBottom: "50px",
+            // textAlign: "center",
+          }}
+          key={index}
+        >
           <span
             style={{
               visibility:
@@ -30,7 +38,7 @@ const HangmanWord = ({
                   : "hidden",
 
               color:
-                !guessedLetters.includes(letter) && reveal ? "red" : "black",
+                !guessedLetters.includes(letter) && reveal ? "red" : "white",
             }}
           >
             {letter}

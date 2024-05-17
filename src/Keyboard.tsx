@@ -47,8 +47,9 @@ const Keyboard = ({
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit,minmax(50px,1fr)",
+        margin: "auto",
+        width: "70%",
         gap: ".5rem",
-        
       }}
     >
       {KEYS.map((key) => {
