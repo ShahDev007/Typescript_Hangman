@@ -57,6 +57,7 @@ const Home = () => {
               position: "absolute",
               top: "15%",
               left: "50%",
+              fontSize:"350%",
               transform: "translate(-50%, -50%)",
               fontFamily: "Montserrat, sans-serif",
             }}
@@ -142,7 +143,7 @@ const Home = () => {
         </Button>
         {/* </div> */}
         <div style={{ fontSize: "20px", marginTop: "18rem" }}>
-          Guess the word and save the man!
+          Guess the word and save the man
         </div>
         <div style={{ textAlign: "center", fontSize: "28px", color: "red" }}>
           Don't let the man hang!!
