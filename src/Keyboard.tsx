@@ -40,7 +40,7 @@ const Keyboard = ({
   addGuessedLetter,
   disabled = false,
 }: KeyboardProps) => {
-  console.log("KB", activeLetters, inactiveLetters);
+  // console.log("KB", activeLetters, inactiveLetters);
 
   return (
     <div

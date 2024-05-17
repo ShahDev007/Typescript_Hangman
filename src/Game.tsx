@@ -31,7 +31,7 @@ function getWord({ category, difficulty, wordCategories }: importedData) {
   } else if (difficulty === "difficult") {
     cat = cat.filter((word: string) => word.length > 5);
   }
-  console.log(cat);
+  // console.log(cat);
 
   const word = cat[Math.floor(Math.random() * cat.length)];
   if (word) {
@@ -65,7 +65,7 @@ function Game() {
 
   // Add guessedLetters function
   const addGuessedLetter = (letter: string) => {
-    console.log("Guessed letters", guessedLetters);
+    // console.log("Guessed letters", guessedLetters);
     if (guessedLetters.includes(letter) || isLoser || isWinner) return;
     setGuessedLetters((currentGuessedLetters) => [
       ...currentGuessedLetters,
@@ -77,11 +77,11 @@ function Game() {
   useEffect(() => {
     if (isLoser || isWinner) {
       setLoading(true);
-      console.log("Here", isLoser, isWinner);
+      // console.log("Here", isLoser, isWinner);
       // Simulate a 10-second delay before redirecting
       setTimeout(() => {
         navigate("/");
-      }, 10000); // 10 seconds
+      }, 6000); // 10 seconds
     }
   }, [isLoser, isWinner]);
 
@@ -90,11 +90,11 @@ function Game() {
     const handler = (e: KeyboardEvent) => {
       const key = e.key;
       if (!key.match(/^[a-z]$/)) {
-        console.log("Inside useEffect");
+        // console.log("Inside useEffect");
         return;
       }
       e.preventDefault();
-      console.log("Key is", key);
+      // console.log("Key is", key);
       addGuessedLetter(key);
     };
     document.addEventListener("keypress", handler);
@@ -110,7 +110,7 @@ function Game() {
     addGuessedLetter(letter2);
   };
   useEffect(() => {
-    console.log(guessedLetters, wordToGuess);
+    // console.log(guessedLetters, wordToGuess);
 
     const getRandomLetters = () => {
       const randomIndex1 = Math.floor(Math.random() * wordToGuess.length);
