@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
-import backgroundImage from "./image2.jpg";
-import hangman from "./image.jpg";
+import backgroundImage from "../public/image2.jpg";
+import hangman from "../public/image.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Helmet } from "react-helmet";
 

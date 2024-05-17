@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Alert from "react-bootstrap/Alert";
 import { useLocation, useNavigate } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
-import backgroundImage from "./image2.jpg";
+import backgroundImage from "../public/image2.jpg";
 import "./Game.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
@@ -142,11 +142,10 @@ function Game() {
           // padding: "2rem",
           color: "white",
           backgroundRepeat: "no-repeat",
-          
         }}
       >
         <div
-          style={{ fontSize: "1rem", textAlign: "center", marginTop: "2rem"}}
+          style={{ fontSize: "1rem", textAlign: "center", marginTop: "2rem" }}
         >
           <Helmet>
             <link
@@ -160,11 +159,12 @@ function Game() {
               variant="success"
               style={{ borderRadius: "5px 5px 5px 5px" }}
             >
-              <b>
-                You got the word, play again!!
-              </b>
+              <b>You got the word, play again!!</b>
               {loading && (
-                <div className="progress-container" style={{marginTop:"10px"}}>
+                <div
+                  className="progress-container"
+                  style={{ marginTop: "10px" }}
+                >
                   <div className="progress">
                     <div className="color"></div>
                   </div>
@@ -192,7 +192,7 @@ function Game() {
           guessedLetters={guessedLetters}
           wordToGuess={wordToGuess}
         />
-        <div style={{ alignSelf: "stretch",marginTop:"10px" }}>
+        <div style={{ alignSelf: "stretch", marginTop: "10px" }}>
           <Keyboard
             disabled={isWinner || isLoser}
             activeLetters={guessedLetters.filter((letter) =>
