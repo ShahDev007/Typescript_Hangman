@@ -4,6 +4,7 @@ import wordCategories from "./wordList.tsx";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import backgroundImage from "./image2.jpg";
+import hangman from "./image.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Helmet } from "react-helmet";
 
@@ -49,7 +50,7 @@ const Home = () => {
         </Helmet>
 
         <div style={{ position: "relative", textAlign: "center" }}>
-          <img src="./src/image.jpg" alt="Nothing" style={{}} />
+          <img src={hangman} alt="Nothing" style={{}} />
           <h1
             style={{
               position: "absolute",
