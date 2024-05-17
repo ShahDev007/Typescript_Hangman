@@ -48,7 +48,7 @@ function Game() {
 
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
-  const [wordToGuess, setWordToGuess] = useState(
+  const [wordToGuess] = useState(
     getWord({ category, difficulty, wordCategories })
   );
   // console.log(wordToGuess);
