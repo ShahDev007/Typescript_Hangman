@@ -130,6 +130,7 @@ function Game() {
 
   return (
     <HelmetProvider>
+      {/* <img src="/image3.jpg" alt="" /> */}
       <div
         style={{
           background: `url(${backgroundImage})`,
