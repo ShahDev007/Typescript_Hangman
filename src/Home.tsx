@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import wordCategories from "./wordList.tsx";
 import Form from "react-bootstrap/Form";
-import { Alert, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import backgroundImage from "../public/image2.jpg";
 import hangman from "../public/image3.png";
 // import hangman from "../public/image.jpg";
@@ -66,80 +66,80 @@ const Home = () => {
         </div>
 
         {/* <div style={{ border:"2px solid white" }}> */}
-          <div
+        <div
+          style={{
+            position: "absolute",
+            top: "17rem",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Form.Select
+            id="category"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
             style={{
-              position: "absolute",
-              top: "17rem",
-              transform: "translateY(-50%)",
+              //   margin: "auto",
+              marginBottom: "25px",
+              maxWidth: "200px",
+              color: "#999999",
+              backgroundColor: "black",
             }}
           >
-            <Form.Select
-              id="category"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              style={{
-                //   margin: "auto",
-                marginBottom: "25px",
-                maxWidth: "200px",
-                color: "#999999",
-                backgroundColor: "black",
-              }}
-            >
-              <option value="" style={{ maxWidth: "10px" }}>
-                Select Category
+            <option value="" style={{ maxWidth: "10px" }}>
+              Select Category
+            </option>
+            {Object.keys(wordCategories).map((category) => (
+              <option
+                key={category}
+                value={category}
+                style={{ maxWidth: "10px" }}
+              >
+                {category}
               </option>
-              {Object.keys(wordCategories).map((category) => (
-                <option
-                  key={category}
-                  value={category}
-                  style={{ maxWidth: "10px" }}
-                >
-                  {category}
-                </option>
-              ))}
-            </Form.Select>
-          </div>
-          <div
+            ))}
+          </Form.Select>
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            top: "20rem",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Form.Select
+            id="difficulty"
+            value={selectedDifficulty}
+            onChange={(e) => setSelectedDifficulty(e.target.value)}
             style={{
-              position: "absolute",
-              top: "20rem",
-              transform: "translateY(-50%)",
+              maxWidth: "200px",
+              //   margin: "auto"
+              color: "#999999",
+              backgroundColor: "black",
             }}
           >
-            <Form.Select
-              id="difficulty"
-              value={selectedDifficulty}
-              onChange={(e) => setSelectedDifficulty(e.target.value)}
-              style={{
-                maxWidth: "200px",
-                //   margin: "auto"
-                color: "#999999",
-                backgroundColor: "black",
-              }}
-            >
-              <option value="">Select Difficulty</option>
-              <option value="easy">Easy</option>
-              <option value="difficult">Difficult</option>
-            </Form.Select>
-          </div>
-          <Button
-            onClick={handleStartGame}
-            style={{
-              marginTop: "1rem",
-              background: "#007bff",
-              border: "none",
-              borderRadius: "4px",
-              padding: "10px 20px",
-              fontSize: "1rem",
-              cursor: "pointer",
-              backgroundColor: "#333333",
-              position: "absolute",
-              top: "24rem",
-              transform: "translateY(-50%)",
-            }}
-          >
-            Start Game
-          </Button>
+            <option value="">Select Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="difficult">Difficult</option>
+          </Form.Select>
+        </div>
+        <Button
+          onClick={handleStartGame}
+          style={{
+            marginTop: "1rem",
+            background: "#007bff",
+            border: "none",
+            borderRadius: "4px",
+            padding: "10px 20px",
+            fontSize: "1rem",
+            cursor: "pointer",
+            backgroundColor: "#333333",
+            position: "absolute",
+            top: "24rem",
+            transform: "translateY(-50%)",
+          }}
+        >
+          Start Game
+        </Button>
         {/* </div> */}
         <div style={{ fontSize: "20px", marginTop: "18rem" }}>
           Guess the word and save the man!
