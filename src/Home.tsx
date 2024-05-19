@@ -57,7 +57,7 @@ const Home = () => {
               position: "absolute",
               top: "15%",
               left: "50%",
-              fontSize:"350%",
+              fontSize: "350%",
               transform: "translate(-50%, -50%)",
               fontFamily: "Montserrat, sans-serif",
             }}
@@ -82,8 +82,9 @@ const Home = () => {
               //   margin: "auto",
               marginBottom: "25px",
               maxWidth: "200px",
-              color: "#999999",
-              backgroundColor: "black",
+              color: "white",
+              backgroundColor: "green",
+              border: "2px solid white",
             }}
           >
             <option value="" style={{ maxWidth: "10px" }}>
@@ -93,7 +94,7 @@ const Home = () => {
               <option
                 key={category}
                 value={category}
-                style={{ maxWidth: "10px" }}
+                style={{ maxWidth: "10px", color: "white" }}
               >
                 {category}
               </option>
@@ -114,17 +115,19 @@ const Home = () => {
             style={{
               maxWidth: "200px",
               //   margin: "auto"
-              color: "#999999",
-              backgroundColor: "black",
+              color: "white",
+              backgroundColor: "green",
+              border: "2px solid white",
             }}
           >
             <option value="">Select Difficulty</option>
             <option value="easy">Easy</option>
-            <option value="difficult">Difficult</option>
+            <option value="difficult">Hard</option>
           </Form.Select>
         </div>
         <Button
           onClick={handleStartGame}
+          className="btn"
           style={{
             marginTop: "1rem",
             background: "#007bff",
@@ -142,10 +145,10 @@ const Home = () => {
           Start Game
         </Button>
         {/* </div> */}
-        <div style={{ fontSize: "20px", marginTop: "18rem" }}>
+        <div style={{ fontSize: "17px", marginTop: "18rem" }}>
           Guess the word and save the man
         </div>
-        <div style={{ textAlign: "center", fontSize: "28px", color: "red" }}>
+        <div style={{ textAlign: "center", fontSize: "25px", color: "red" }}>
           Don't let the man hang!!
           {/* <img src="./hanging_man.png" alt="" /> */}
           {/* man hang!! */}

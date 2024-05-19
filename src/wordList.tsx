@@ -3,7 +3,7 @@ interface WordCategories {
 }
 
 const wordCategories: WordCategories = {
-  animals: [
+  Animals: [
     "polar bear",
     "tiger",
     "elephant",
@@ -31,7 +31,7 @@ const wordCategories: WordCategories = {
     "peacock",
     "sloth"
   ],
-  countries: [
+  Countries: [
     "canada",
     "brazil",
     "japan",
@@ -59,7 +59,7 @@ const wordCategories: WordCategories = {
     "portugal",
   ],
 
-  fruits: [
+  Fruits: [
     "apple",
     "banana",
     "orange",
@@ -87,7 +87,7 @@ const wordCategories: WordCategories = {
     "passion fruit",
   ],
 
-  sports: [
+  Sports: [
     "soccer",
     "basketball",
     "tennis",
@@ -115,7 +115,7 @@ const wordCategories: WordCategories = {
     "skateboarding",
   ],
 
-  colors: [
+  Colors: [
     "red",
     "blue",
     "green",
