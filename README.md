@@ -1,4 +1,4 @@
-<a name="readme-top"></a>
+<a name="readme-top" id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -29,8 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-BrainStorm Quiz is a web-based quiz application designed to challenge players' general knowledge across various topics. Built using React, Typescript, and Material UI, the application fetches 10 quiz questions from an API, offering a wide array of trivia for players to tackle. With instant feedback, ongoing score tracking, and a comprehensive scorecard at the end, users can monitor their performance and review their answers. The option to restart the quiz with a fresh set of questions ensures endless fun and learning opportunities for players of all backgrounds.
-
+This project is a Hangman game built with ReactJS, TypeScript, Material-UI, and React-Bootstrap. Players can choose a category and difficulty level on the home page before starting the game. The goal is to guess words with the help of initial hints, within six attempts. The game features both typing and on-screen character buttons for input. After each game, a win or loss message is displayed, and players are redirected to the home page to start a new game.
 
 ### Built With
 
@@ -56,7 +55,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/ShahDev007/BrainStorm-Quiz.git
+   git clone https://github.com/ShahDev007/Typescript_Hangman.git
    ```
 2. Install NPM packages
    ```sh
@@ -113,7 +112,7 @@ Don't forget to give the project a star! Thanks again!
 
 Dev Shah - https://www.linkedin.com/in/dev-shah-437528194/
 <br>
-Project Link: https://github.com/ShahDev007/BrainStorm-Quiz/
+Project Link: https://github.com/ShahDev007/Typescript_Hangman/
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
 
