@@ -47,7 +47,7 @@ Frameworks/libraries used to bootstrap this project:
 
 ## Getting Started 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with npm-create-vite.
 
 ### Installation
 
@@ -60,7 +60,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Install NPM packages
    ```sh
    npm install
- 
+
+ or
+
+1. Pull the image uploaded on Docker:- https://hub.docker.com/r/shahdev007/hangman
 
 ## Start the Server
 
