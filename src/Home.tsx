@@ -57,7 +57,7 @@ const Home = () => {
               position: "absolute",
               top: "15%",
               left: "50%",
-              fontSize: "320%",
+              fontSize: "300%",
               transform: "translate(-50%, -50%)",
               fontFamily: "Montserrat, sans-serif",
             }}
